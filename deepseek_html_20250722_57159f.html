@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriFood - Revolution in Personalized Nutrition</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .presentation-slide {
+            min-height: 100vh;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .logo {
+            max-height: 120px;
+            margin-bottom: 2rem;
+        }
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 2rem auto;
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #48c774;
+        }
+        .team-card {
+            transition: transform 0.3s;
+        }
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+        .has-gradient-bg {
+            background: linear-gradient(135deg, #48c774 0%, #3298dc 100%);
+            color: white;
+        }
+        .slide-title {
+            position: relative;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+        .slide-title:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: #48c774;
+        }
+        .has-gradient-bg .slide-title:after {
+            background: white;
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #48c774;
+        }
+        .has-gradient-bg .stat-number {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Title Slide -->
+    <section class="presentation-slide has-gradient-bg">
+        <div class="container has-text-centered">
+            <img src="https://via.placeholder.com/150x150?text=NutriFood" alt="NutriFood Logo" class="logo">
+            <h1 class="title is-1 has-text-white">Революция в здоровом питании</h1>
+            <h2 class="subtitle is-3 has-text-white">Персонализированный AI-сервис</h2>
+            <p class="is-size-4 mt-4">Еда, созданная для тебя</p>
+            <p class="is-size-5 mt-3">Инновационная платформа для доставки персонализированного питания с использованием AI и аналитики</p>
+        </div>
+    </section>
+
+    <!-- Slide 2: Problem -->
+    <section class="presentation-slide">
+        <div class="container">
+            <h2 class="title is-2 slide-title">Проблема</h2>
+            
+            <div class="columns">
+                <div class="column">
+                    <div class="box">
+                        <span class="stat-number">2B+</span>
+                        <p class="is-size-5">людей с избыточным весом (данные ВОЗ)</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="box">
+                        <i class="feature-icon fas fa-clock"></i>
+                        <h3 class="title is-4">Нехватка времени</h3>
+                        <p>Занятые люди не успевают планировать здоровое питание</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="box">
+                        <i class="feature-icon fas fa-utensils"></i>
+                        <h3 class="title is-4">Ограничения сервисов</h3>
+                        <p>Текущие сервисы не предлагают персонализации и фокуса на здоровье</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="obesityChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 3: Solution -->
+    <section class="presentation-slide has-gradient-bg">
+        <div class="container">
+            <h2 class="title is-2 slide-title has-text-white">Решение</h2>
+            
+            <div class="columns">
+                <div class="column">
+                    <div class="has-text-centered">
+                        <i class="feature-icon fas fa-robot"></i>
+                        <h3 class="title is-4 has-text-white">AI-платформа</h3>
+                        <p>Доставка здорового питания с AI-аналитикой</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="has-text-centered">
+                        <i class="feature-icon fas fa-user-cog"></i>
+                        <h3 class="title is-4 has-text-white">Индивидуальные меню</h3>
+                        <p>На основе активности, метаболизма и предпочтений</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="columns mt-6">
+                <div class="column">
+                    <div class="box">
+                        <h3 class="title is-4">AI-нутрициолог</h3>
+                        <p>Анализ фото еды и интеграция с носимыми устройствами</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="box">
+                        <h3 class="title is-4">Умные терминалы</h3>
+                        <p>Food Lockers в бизнес-центрах и жилых комплексах</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="box">
+                        <h3 class="title is-4">Метаболический паспорт</h3>
+                        <p>ДНК-анализ и гиперперсонализация питания</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 4: Target Audience -->
+    <section class="presentation-slide">
+        <div class="container">
+            <h2 class="title is-2 slide-title">Целевая аудитория</h2>
+            
+            <div class="columns">
+                <div class="column">
+                    <div class="box has-text-centered">
+                        <i class="feature-icon fas fa-weight"></i>
+                        <h3 class="title is-4">Снижение веса</h3>
+                        <p>Люди, стремящиеся к здоровому образу жизни</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="box has-text-centered">
+                        <i class="feature-icon fas fa-mobile-alt"></i>
+                        <h3 class="title is-4">Активные пользователи</h3>
+                        <p>Офисные сотрудники и предприниматели</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="box has-text-centered">
+                        <i class="feature-icon fas fa-gem"></i>
+                        <h3 class="title is-4">Премиум сегмент</h3>
+                        <p>Пользователи с высокой платежеспособностью</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="audienceChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 5: Unique Features -->
+    <section class="presentation-slide">
+        <div class="container">
+            <h2 class="title is-2 slide-title">Уникальные особенности</h2>
+            
+            <div class="columns is-multiline">
+                <div class="column is-one-third">
+                    <div class="box">
+                        <i class="feature-icon fas fa-dna"></i>
+                        <h3 class="title is-5">ДНК-анализ</h3>
+                        <p>Персонализация на основе генетических данных</p>
+                    </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="box">
+                        <i class="feature-icon fas fa-camera"></i>
+                        <h3 class="title is-5">Анализ фото</h3>
+                        <p>AI определяет состав и калорийность блюд</p>
+                    </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="box">
+                        <i class="feature-icon fas fa-lock"></i>
+                        <h3 class="title is-5">Food Lockers</h3>
+                        <p>Умные терминалы питания 24/7</p>
+                    </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="box">
+                        <i class="feature-icon fas fa-wallet"></i>
+                        <h3 class="title is-5">Диет-кешбэк</h3>
+                        <p>Вознаграждение за здоровые привычки</p>
+                    </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="box">
+                        <i class="feature-icon fas fa-chart-line"></i>
+                        <h3 class="title is-5">Динамическое ценообразование</h3>
+                        <p>Персональные предложения и скидки</p>
+                    </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="box">
+                        <i class="feature-icon fas fa-microscope"></i>
+                        <h3 class="title is-5">Анализ микробиома</h3>
+                        <p>Рекомендации по питанию для здоровья кишечника</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 6: Market -->
+    <section class="presentation-slide has-gradient-bg">
+        <div class="container">
+            <h2 class="title is-2 slide-title has-text-white">Рынок и возможности</h2>
+            
+            <div class="columns">
+                <div class="column">
+                    <div class="has-text-centered">
+                        <span class="stat-number">$700B</span>
+                        <p class="is-size-4">Объем рынка здорового питания</p>
+                        <p class="is-size-5">Рост 8% в год (Grand View Research)</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="chart-container">
+                        <canvas id="marketChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content mt-6">
+                <h3 class="title is-4 has-text-white">Конкурентные преимущества</h3>
+                <div class="columns">
+                    <div class="column">
+                        <div class="box">
+                            <h4 class="title is-5">Перед Blue Apron, HelloFresh</h4>
+                            <ul>
+                                <li>Персонализация на основе данных</li>
+                                <li>Интеграция с устройствами здоровья</li>
+                                <li>Научный подход к питанию</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="box">
+                            <h4 class="title is-5">Перед Weight Watchers</h4>
+                            <ul>
+                                <li>AI вместо общих рекомендаций</li>
+                                <li>Удобство доставки</li>
+                                <li>Генетический анализ</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 7: Technologies -->
+    <section class="presentation-slide">
+        <div class="container">
+            <h2 class="title is-2 slide-title">Технологии и инновации</h2>
+            
+            <div class="columns">
+                <div class="column">
+                    <div class="box">
+                        <i class="feature-icon fas fa-brain"></i>
+                        <h3 class="title is-4">Искусственный интеллект</h3>
+                        <p>Анализ данных и персонализация меню в реальном времени</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="box">
+                        <i class="feature-icon fas fa-plug"></i>
+                        <h3 class="title is-4">Интеграция с IoT</h3>
+                        <p>Умные холодильники, плиты и кухонные устройства</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="columns mt-4">
+                <div class="column">
+                    <div class="box">
+                        <i class="feature-icon fas fa-vial"></i>
+                        <h3 class="title is-4">Лабораторные партнерства</h3>
+                        <p>ДНК-тесты и анализ микробиома кишечника</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="box">
+                        <i class="feature-icon fas fa-mobile-alt"></i>
+                        <h3 class="title is-4">Мобильные технологии</h3>
+                        <p>AR для анализа питания и трекинг потребления</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 8: Business Model -->
+    <section class="presentation-slide">
+        <div class="container">
+            <h2 class="title is-2 slide-title">Бизнес-модель</h2>
+            
+            <div class="columns">
+                <div class="column">
+                    <div class="box has-text-centered">
+                        <i class="feature-icon fas fa-user-plus"></i>
+                        <h3 class="title is-4">Абонентская плата</h3>
+                        <p>Премиум-подписка с расширенными функциями</p>
+                        <p class="has-text-weight-bold">$20-50/месяц</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="box has-text-centered">
+                        <i class="feature-icon fas fa-store"></i>
+                        <h3 class="title is-4">Комиссии</h3>
+                        <p>С ресторанов и домашних кухонь в сети</p>
+                        <p class="has-text-weight-bold">15-25% с заказа</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="box has-text-centered">
+                        <i class="feature-icon fas fa-handshake"></i>
+                        <h3 class="title is-4">Партнерства</h3>
+                        <p>С брендами здорового питания и лабораториями</p>
+                        <p class="has-text-weight-bold">$X млн/год</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="revenueChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 9: Scaling Plan -->
+    <section class="presentation-slide has-gradient-bg">
+        <div class="container">
+            <h2 class="title is-2 slide-title has-text-white">План масштабирования</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <p class="heading">Год 1</p>
+                        <div class="box">
+                            <h3 class="title is-4">Запуск в ключевых городах</h3>
+                            <p>Москва, Санкт-Петербург, Казань</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <p class="heading">Год 2</p>
+                        <div class="box">
+                            <h3 class="title is-4">Партнерства</h3>
+                            <p>Бизнес-центры, фитнес-клубы, лаборатории</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <p class="heading">Год 3</p>
+                        <div class="box">
+                            <h3 class="title is-4">Интеграция</h3>
+                            <p>С глобальными сервисами (Uber Eats, MyFitnessPal)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <p class="heading">3-5 лет</p>
+                        <div class="box">
+                            <h3 class="title is-4">Международная экспансия</h3>
+                            <p>Европа, США, Азия</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 10: Team -->
+    <section class="presentation-slide">
+        <div class="container">
+            <h2 class="title is-2 slide-title">Команда</h2>
+            
+            <div class="columns">
+                <div class="column">
+                    <div class="card team-card">
+                        <div class="card-content has-text-centered">
+                            <div class="media">
+                                <div class="media-left">
+                                    <figure class="image is-96x96">
+                                        <img src="https://via.placeholder.com/96" alt="Founder">
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-4">Алексей Петров</p>
+                                    <p class="subtitle is-6">CEO, Основатель</p>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <p>10+ лет в FoodTech, экс-директор по продукту в Delivery Club</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <div class="card team-card">
+                        <div class="card-content has-text-centered">
+                            <div class="media">
+                                <div class="media-left">
+                                    <figure class="image is-96x96">
+                                        <img src="https://via.placeholder.com/96" alt="CTO">
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-4">Мария Смирнова</p>
+                                    <p class="subtitle is-6">CTO, Сооснователь</p>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <p>Эксперт в AI и машинном обучении, PhD в Computer Science</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="columns mt-4">
+                <div class="column">
+                    <div class="card team-card">
+                        <div class="card-content has-text-centered">
+                            <div class="media">
+                                <div class="media-left">
+                                    <figure class="image is-96x96">
+                                        <img src="https://via.placeholder.com/96" alt="Nutrition">
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-4">Дмитрий Иванов</p>
+                                    <p class="subtitle is-6">Главный нутрициолог</p>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <p>Доктор медицинских наук, специалист по спортивной диетологии</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <div class="card team-card">
+                        <div class="card-content has-text-centered">
+                            <div class="media">
+                                <div class="media-left">
+                                    <figure class="image is-96x96">
+                                        <img src="https://via.placeholder.com/96" alt="Advisor">
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-4">Консультанты</p>
+                                    <p class="subtitle is-6">Эксперты в диетологии и технологиях</p>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <p>Ведущие специалисты из MIT, Института питания РАМН</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 11: Financial Plan -->
+    <section class="presentation-slide">
+        <div class="container">
+            <h2 class="title is-2 slide-title">Финансовый план</h2>
+            
+            <div class="columns">
+                <div class="column">
+                    <div class="box has-text-centered">
+                        <span class="stat-number">$2M</span>
+                        <p class="is-size-4">Требуемые инвестиции</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="chart-container">
+                        <canvas id="budgetChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="columns mt-6">
+                <div class="column">
+                    <div class="box">
+                        <h3 class="title is-4">Распределение инвестиций</h3>
+                        <ul>
+                            <li>Разработка платформы: 20%</li>
+                            <li>Маркетинг: 50%</li>
+                            <li>Логистика и партнерства: 20%</li>
+                            <li>Операционные расходы: 10%</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="box">
+                        <h3 class="title is-4">Прогноз ROI</h3>
+                        <ul>
+                            <li>Выход на самоокупаемость: 18 месяцев</li>
+                            <li>Прогноз выручки за 3 года: $X млн</li>
+                            <li>Маржинальность: 25-30%</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 12: Call to Action -->
+    <section class="presentation-slide has-gradient-bg">
+        <div class="container has-text-centered">
+            <h2 class="title is-1 has-text-white mb-6">Присоединяйтесь к революции в здоровом питании</h2>
+            <h3 class="subtitle is-3 has-text-white mb-6">Инвестируйте в будущее персонализированного FoodTech</h3>
+            
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <div class="box">
+                        <div class="content">
+                            <p class="is-size-4">Контакты для обсуждения:</p>
+                            <p class="is-size-5 mt-3"><i class="fas fa-envelope mr-2"></i> invest@nutrifood.ai</p>
+                            <p class="is-size-5"><i class="fas fa-phone mr-2"></i> +7 (123) 456-78-90</p>
+                            <p class="is-size-5"><i class="fas fa-globe mr-2"></i> www.nutrifood.ai</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-6">
+                <button class="button is-white is-large">
+                    <span class="icon">
+                        <i class="fas fa-file-contract"></i>
+                    </span>
+                    <span>Получить инвестиционное предложение</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Obesity Chart
+        const obesityCtx = document.getElementById('obesityChart').getContext('2d');
+        const obesityChart = new Chart(obesityCtx, {
+            type: 'bar',
+            data: {
+                labels: ['2010', '2015', '2020', '2023'],
+                datasets: [{
+                    label: 'Люди с избыточным весом (млрд)',
+                    data: [1.5, 1.7, 1.9, 2.1],
+                    backgroundColor: '#48c774',
+                    borderColor: '#3298dc',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Рост проблемы ожирения в мире',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'top',
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Млрд человек'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Audience Chart
+        const audienceCtx = document.getElementById('audienceChart').getContext('2d');
+        const audienceChart = new Chart(audienceCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Снижение веса', 'Поддержание здоровья', 'Профессиональные спортсмены', 'Медицинские показания'],
+                datasets: [{
+                    data: [45, 35, 10, 10],
+                    backgroundColor: [
+                        '#48c774',
+                        '#3298dc',
+                        '#ffdd57',
+                        '#f14668'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Целевая аудитория по целям',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'right',
+                    }
+                }
+            }
+        });
+
+        // Market Chart
+        const marketCtx = document.getElementById('marketChart').getContext('2d');
+        const marketChart = new Chart(marketCtx, {
+            type: 'line',
+            data: {
+                labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024 (прогноз)'],
+                datasets: [{
+                    label: 'Рынок здорового питания ($ млрд)',
+                    data: [450, 500, 550, 600, 650, 700, 750],
+                    fill: false,
+                    backgroundColor: 'white',
+                    borderColor: 'white',
+                    tension: 0.1,
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Рост рынка здорового питания',
+                        font: {
+                            size: 16
+                        },
+                        color: 'white'
+                    },
+                    legend: {
+                        labels: {
+                            color: 'white'
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        ticks: {
+                            color: 'white'
+                        },
+                        grid: {
+                            color: 'rgba(255,255,255,0.1)'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: 'white'
+                        },
+                        grid: {
+                            color: 'rgba(255,255,255,0.1)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Revenue Chart
+        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+        const revenueChart = new Chart(revenueCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Подписки', 'Комиссии', 'Партнерства', 'Консультации'],
+                datasets: [{
+                    label: 'Доход ($ тыс.)',
+                    data: [1200, 800, 500, 300],
+                    backgroundColor: [
+                        '#48c774',
+                        '#3298dc',
+                        '#ffdd57',
+                        '#f14668'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Прогноз доходов по источникам (год 3)',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Тысяч долларов'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Budget Chart
+        const budgetCtx = document.getElementById('budgetChart').getContext('2d');
+        const budgetChart = new Chart(budgetCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Разработка', 'Маркетинг', 'Логистика', 'Операционные'],
+                datasets: [{
+                    data: [20, 50, 20, 10],
+                    backgroundColor: [
+                        '#48c774',
+                        '#3298dc',
+                        '#ffdd57',
+                        '#f14668'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Распределение инвестиций',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'right',
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
